@@ -34,81 +34,86 @@ int	ft_no_double(t_list *a)
 	return (1);
 }
 
-int	ft_bin_len(int k)
+int ft_abs(int i)
 {
-	if (k < 8)
-		return (3);
-	else if (k < 16)
-		return (4);
-	else if (k < 32)
-		return (5);
-	else if (k < 64)
-		return (6);
-	else if (k < 128)
-		return (7);
-	else if (k < 256)
-		return (8);
-	return (9);
+    if (i < 0)
+        return (i * -1);
+    return (i);
 }
 
-void	ft_bin(t_list *a, int k)
+void	ft_target_pos(t_list *a, t_list *b)
 {
+	t_element	*indexx;
 	t_element	*temp;
-	int			i;
 
-	i = ft_bin_len(k);
-	temp = a->first;
-	while (temp->next)
+	temp = b->first;
+	while (temp)
 	{
-		k = i - 1;
-		temp->bin = malloc (sizeof(int) * i);
-		if (!temp->bin)
-			error2("Error", a);
-		while (k >= 0)
+		indexx = a->first;
+		while (indexx)
 		{
-			temp->bin[k--] = temp->pos % 2;
-			temp->pos = temp->pos / 2;
+			if (indexx->index > temp->index && indexx->index < temp->target_pos)
+				temp->target_pos = indexx->pos;
+			indexx = indexx->next;
+		}
+		if (temp->index == INT_MAX)
+		{
+			indexx = a->first;
+			while (indexx)
+			{
+				if (indexx->index < temp->index)
+					temp->target_pos = indexx->pos;
+			}
 		}
 		temp = temp->next;
 	}
-	k = i - 1;
-	temp->bin = malloc (sizeof(int) * i);
-	if (!temp->bin)
-		error2("Error", a);
-	while (k >= 0)
-	{
-		temp->bin[k--] = temp->pos % 2;
-		temp->pos = temp->pos / 2;
-	}
 }
 
-void	ft_pos(t_list *a, int k)
+int	ft_pos(t_list *a, t_list *b)
 {
-	int			i;
-	t_element	*index;
+	int 		i;
 	t_element	*temp;
 
 	i = 0;
-	index = a->first;
-	while (index->next)
-		index = index->next;
-	while (i < k)
+	temp = a->first;
+	while (temp)
 	{
-		index = a->first;
-		while (index->pos != -1 && index->next)
-			index = index->next;
-		temp = index;
-		if (index->next)
-			index = index->next;
-		while (index->next)
-		{
-			if (index->number < temp->number && index->pos == -1)
-				temp = index;
-			index = index->next;
-		}
-		if (index->number < temp->number && index->pos == -1)
-			temp = index;
 		temp->pos = i++;
+		temp = temp->next;
 	}
-	ft_bin(a, k);
+	i = 0;
+	temp = b->first;
+	while (temp)
+	{
+		temp->pos = i++;
+		temp = temp->next;
+	}
+	return (i);
+}
+
+void	ft_index(t_list *a, int k)
+{
+	int			i;
+	t_element	*indexx;
+	t_element	*temp;
+
+	i = 1;
+	while (i <= k)
+	{
+		indexx = a->first;
+		while (indexx->index != -1 && indexx->next)
+			indexx = indexx->next;
+		temp = indexx;
+		if (indexx->next)
+			indexx = indexx->next;
+		while (indexx->next)
+		{
+			if (indexx->number < temp->number && indexx->index == -1)
+				temp = indexx;
+			indexx = indexx->next;
+		}
+		if (indexx->number < temp->number && indexx->index == -1)
+			temp = indexx;
+		temp->index = i++;
+	}
 }

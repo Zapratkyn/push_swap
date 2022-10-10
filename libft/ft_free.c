@@ -21,14 +21,8 @@ void	ft_free(t_list *stack)
 	{
 		index = stack->first->next;
 		temp = index->next->next;
-		if (index->next->bin)
-			free(index->next->bin);
 		free(index->next);
 		index->next = temp;
 	}
-	if (stack->first->next->bin)
-		free(stack->first->next->bin);
 	free(stack->first->next);
-	if (stack->first->bin)
-		free(stack->first->bin);
 }

@@ -13,7 +13,7 @@
 NAME					= push_swap
 SRC						= srcs/main.c srcs/ft_sort.c srcs/push_swap_utils.c srcs/push.c srcs/rotate.c srcs/short_swap.c srcs/swap.c \
 							libft/ft_errors.c libft/ft_success.c libft/ft_putendl_fd.c libft/ft_atoi.c libft/ft_strlen.c libft/ft_free.c \
-							libft/ft_printf.c libft/ft_print_chars.c libft/ft_print_nbr.c libft/ft_print_others.c
+							libft/ft_printf.c libft/ft_print_chars.c libft/ft_print_nbr.c libft/ft_print_others.c srcs/ft_sortest_options.c
 NORM					= @norminette
 CC						= gcc
 RM						= rm -rf

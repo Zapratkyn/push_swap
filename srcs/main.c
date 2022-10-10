@@ -34,8 +34,8 @@ void	fill_a(t_list *a, int nb)
 	if (!temp)
 		error2("Error", a);
 	temp->number = nb;
-	temp->spot = i;
-	temp->pos = -1;
+	temp->index = -1;
+	temp->target_pos = INT_MAX;
 	if (i == 1)
 		a->first = temp;
 	else if (i > 1)

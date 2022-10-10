@@ -16,6 +16,7 @@
 # include	<stdlib.h>
 # include	<unistd.h>
 # include	<string.h>
+# include	<limits.h>
 
 typedef struct s_element	t_element;
 typedef struct s_list		t_list;
@@ -23,9 +24,11 @@ typedef struct s_list		t_list;
 struct	s_element
 {
 	int					number;
-	int					*bin;
+	int					index;
 	int					pos;
-	int					spot;
+	int					target_pos;
+	int					cost_a;
+	int					cost_b;
 	t_element			*next;
 };
 
