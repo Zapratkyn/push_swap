@@ -90,7 +90,7 @@ t_element	*ft_pick(t_list *a, t_list *b)
 		indexx = a->first;
 		while (indexx)
 		{
-			if (indexx->index == temp->target_pos && ft_total(temp, indexx) < cost)
+			if (ft_total(temp, indexx) < cost)
 			{
 				cost = ft_total(temp, indexx);
 				result = temp;
