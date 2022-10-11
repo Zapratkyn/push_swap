@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 13:35:38 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/05 17:08:16 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/11 11:31:41 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	ft_atoi(char *str)
 			sign = -1;
 		i++;
 	}
-	for (i = i; str[i] == '0'; i++);
+	for (i = (i + 1) - 1; str[i] == '0'; i++);
 	if (str[i] < '1' || str[i] > '9')
 			return (0);
 	while (str[i] >= '0' && str[i] <= '9')

@@ -6,34 +6,11 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:50:15 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/04 15:27:42 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/11 12:12:49 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-int	ft_initial_push(t_list *a, t_list *b, int k)
-{
-	// int			i;
-	int			op;
-	// t_element	*temp;
-
-	(void)k;
-	// i = 1;
-	op = 0;
-	// while (i <= k)
-	// {
-	// 	temp = a->first;
-	// 	if (temp->index <= (k / 2))
-	// 		op += push_b(a, b);
-	// 	else if (temp->index > (k / 2))
-	// 		op += rotate(a, 1);
-	// 	i++;
-	// }
-	while (a->first->next->next->next)
-		op += push_b(a, b);
-	return (op);
-}
 
 void	ft_cost(t_list *a, t_list *b, int i, int k)
 {
@@ -66,11 +43,11 @@ int	ft_total(t_element *temp, t_element *index)
 	i = 0;
 	if (temp->cost_b < 0)
 		i += (temp->cost_b * -1);
-	else if (temp->cost_b > 0)
+	if (temp->cost_b > 0)
 		i += temp->cost_b;
 	if (index->cost_a < 0)
 		i += (index->cost_a * -1);
-	else if (temp->cost_a > 0)
+	if (index->cost_a > 0)
 		i += index->cost_a;
 	return (i);
 }
@@ -90,7 +67,7 @@ t_element	*ft_pick(t_list *a, t_list *b)
 		indexx = a->first;
 		while (indexx)
 		{
-			if (ft_total(temp, indexx) < cost)
+			if (indexx->index == temp->target_pos && ft_total(temp, indexx) < cost)
 			{
 				cost = ft_total(temp, indexx);
 				result = temp;
@@ -99,6 +76,7 @@ t_element	*ft_pick(t_list *a, t_list *b)
 		}
 		temp = temp->next;
 	}
+	ft_printf("\nNombre choisi : %d\n\n", result->number);
 	return (result);
 }
 
@@ -130,78 +108,6 @@ int	ft_sortest(t_list *a, t_list *b, t_element *temp)
 	return (op);
 }
 
-void	ft_display_target(t_list *b)
-{
-	t_element	*temp;
-
-	ft_printf("\nCibles :\n");
-	temp = b->first;
-	while (temp)
-	{
-		ft_printf("%d ", temp->target_pos);
-		temp = temp->next;
-	}
-	write (1, "\n", 1);
-}
-
-void	ft_display_index_a(t_list *a)
-{
-	t_element	*temp;
-
-	write (1, "\n", 1);
-	temp = a->first;
-	while (temp)
-	{
-		ft_printf("%d ", temp->index);
-		temp = temp->next;
-	}
-	write (1, "\n", 1);
-}
-
-void	ft_display_index(t_list *a, t_list *b)
-{
-	t_element	*temp;
-
-	ft_printf("\nIndex :\n");
-	temp = a->first;
-	ft_printf("A : ");
-	while (temp)
-	{
-		ft_printf("%d ", temp->index);
-		temp = temp->next;
-	}
-	temp = b->first;
-	ft_printf("\n\nB : ");
-	while (temp)
-	{
-		ft_printf("%d ", temp->index);
-		temp = temp->next;
-	}
-	write (1, "\n\n", 2);
-}
-
-void	ft_display_numbers(t_list *a, t_list *b)
-{
-	t_element	*temp;
-
-	ft_printf("\nNombres :\n");
-	temp = a->first;
-	ft_printf("A : ");
-	while (temp)
-	{
-		ft_printf("%d ", temp->number);
-		temp = temp->next;
-	}
-	temp = b->first;
-	ft_printf("\n\nB : ");
-	while (temp)
-	{
-		ft_printf("%d ", temp->number);
-		temp = temp->next;
-	}
-	write (1, "\n\n", 2);
-}
-
 int	ft_sort(t_list *a, int k)
 {
 	t_list		*b;
@@ -216,25 +122,15 @@ int	ft_sort(t_list *a, int k)
 		error2("Error", a);
 	op += ft_initial_push(a, b, k);
 	op += three_args(a);
-	ft_display_numbers(a, b);
 	while (b->first)
 	{
 		i = ft_pos(a, b);
 		ft_target_pos(a, b);
-		// ft_display_index(a, b);
-		// ft_display_target(b);
 		ft_cost(a, b, i, k);
-		// ft_display_cost(a, b);
-		// write (1, "\n", 1);
 		temp = ft_pick(a, b);
-		// ft_printf("Index du pick : %d\n\n", temp->index);
 		op += ft_sortest(a, b, temp);
-		ft_printf("=============\n");
-		ft_display_numbers(a, b);
-		
 	}
 	free(b);
-	// ft_display_index_a(a);
 	op += ft_finalisation(a, k);
 	return (op);
 }

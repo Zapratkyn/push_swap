@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:02:55 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/05 16:46:16 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/11 12:11:42 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int								three_args(t_list *a);
 int								four_or_five_args(t_list *a, int argc);
 int								ft_sorter(int i, int j, t_list *a, t_list *b);
 // ft_sort.c
-int	                            ft_initial_push(t_list *a, t_list *b, int k);
+int								ft_total(t_element *temp, t_element *index);
 void	                        ft_cost(t_list *a, t_list *b, int i, int k);
 t_element	                    *ft_pick(t_list *a, t_list *b);
 int								ft_sortest(t_list *a, t_list *b, t_element *temp);
@@ -55,6 +55,8 @@ int                             ft_option_2(t_list *a, t_list *b,
                                     t_element *index_a, t_element *temp);
 int                             ft_option_3(t_list *stack, t_element *element);
 int                             ft_option_4(t_list *stack, t_element *element);
+// ft_edges.c
 int                             ft_finalisation(t_list *a, int k);
+int	                            ft_initial_push(t_list *a, t_list *b, int k);
 
 #endif
