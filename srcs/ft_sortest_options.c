@@ -74,12 +74,12 @@ int    ft_finalisation(t_list *a, int k)
     if (a->first->index <= (k / 2))
     {
         while (!a_is_sorted(a))
-            op += rotate(a, 1);
+            op += reverse_rotate(a, 1);
     }
     else if (a->first->index > (k / 2))
     {
         while (!a_is_sorted(a))
-            op += reverse_rotate(a, 1);
+            op += rotate(a, 1);
     }
     return (op);
 }

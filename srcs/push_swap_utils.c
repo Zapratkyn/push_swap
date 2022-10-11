@@ -34,11 +34,16 @@ int	ft_no_double(t_list *a)
 	return (1);
 }
 
-int ft_abs(int i)
+void	ft_reset_target(t_list *b)
 {
-    if (i < 0)
-        return (i * -1);
-    return (i);
+	t_element	*temp;
+
+	temp = b->first;
+	while (temp)
+	{
+		temp->target_pos = INT_MAX;
+		temp = temp->next;
+	}
 }
 
 void	ft_target_pos(t_list *a, t_list *b)
@@ -46,6 +51,8 @@ void	ft_target_pos(t_list *a, t_list *b)
 	t_element	*indexx;
 	t_element	*temp;
 
+	
+	ft_reset_target(b);
 	temp = b->first;
 	while (temp)
 	{
@@ -53,16 +60,17 @@ void	ft_target_pos(t_list *a, t_list *b)
 		while (indexx)
 		{
 			if (indexx->index > temp->index && indexx->index < temp->target_pos)
-				temp->target_pos = indexx->pos;
+				temp->target_pos = indexx->index;
 			indexx = indexx->next;
 		}
-		if (temp->index == INT_MAX)
+		if (temp->target_pos == INT_MAX)
 		{
 			indexx = a->first;
 			while (indexx)
 			{
-				if (indexx->index < temp->index)
-					temp->target_pos = indexx->pos;
+				if (indexx->index < temp->target_pos)
+					temp->target_pos = indexx->index;
+				indexx = indexx->next;
 			}
 		}
 		temp = temp->next;
