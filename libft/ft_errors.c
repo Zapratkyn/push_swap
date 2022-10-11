@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/03 17:04:09 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/04 11:54:36 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/11 12:41:00 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,20 @@ void	error(char *msg)
 	exit(EXIT_FAILURE);
 }
 
-void	error2(char *msg, t_list *list)
+void	error2(char *msg, t_list *a, t_list *b)
 {
 	ft_putendl_fd(msg, 2);
-	if (list->first)
+	if (a)
 	{
-		if (list->first->next)
-			ft_free(list);
-		free(list->first);
+		if (a->first)
+		{
+			if (a->first->next)
+				ft_free(a);
+			free(a->first);
+		}
+		free(a);
 	}
-	free(list);
+	if (b)
+		free(b);
 	exit (EXIT_FAILURE);
 }

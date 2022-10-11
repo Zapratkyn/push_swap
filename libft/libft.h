@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:00:00 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/04 15:26:29 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/11 12:39:28 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,10 +102,10 @@ char			*ft_get_hex(unsigned int num, const char format,
 					unsigned int len);
 char			*ft_get_ptr(unsigned long num, unsigned int len);
 void			error(char *msg);
-void			error2(char *msg, t_list *list);
-void			success(char *msg, t_list *a);
-void			success2(char *msg, t_list *a);
-void			success3(t_list *a, int op);
+void			error2(char *msg, t_list *a, t_list *b);
+void			success(char *msg, t_list *a, t_list *b);
+void			success2(char *msg, t_list *a, t_list *b);
+void			success3(t_list *a, t_list *b, int op);
 void			ft_free(t_list *stack);
 int				ft_iszero(char *str);
 

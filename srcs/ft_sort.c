@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:50:15 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/11 12:15:11 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/11 14:14:31 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ t_element	*ft_pick(t_list *a, t_list *b)
 		indexx = a->first;
 		while (indexx)
 		{
-			if (indexx->index == temp->target_pos && ft_total(temp, indexx) < cost)
+			if (indexx->index == temp->target_pos
+				&& ft_total(temp, indexx) < cost)
 			{
 				cost = ft_total(temp, indexx);
 				result = temp;
@@ -103,33 +104,29 @@ int	ft_sortest(t_list *a, t_list *b, t_element *temp)
 		while (index_a->cost_a < 0)
 			op += ft_option_4(a, index_a);
 	}
-	op += push_a(a, b);
+	op += pa(a, b);
 	return (op);
 }
 
-int	ft_sort(t_list *a, int k)
+int	ft_sort(t_list *a, t_list *b, int k)
 {
-	t_list		*b;
-	t_element 	*temp;
+	t_element	*temp;
 	int			op;
 	int			i;
 
 	op = 0;
 	ft_index(a, k);
-	b = initialisation('b');
-	if (!b)
-		error2("Error", a);
 	op += ft_initial_push(a, b, k);
 	op += three_args(a);
 	while (b->first)
 	{
+		ft_reset_target(b);
 		i = ft_pos(a, b);
 		ft_target_pos(a, b);
 		ft_cost(a, b, i, k);
 		temp = ft_pick(a, b);
 		op += ft_sortest(a, b, temp);
 	}
-	free(b);
 	op += ft_finalisation(a, k);
 	return (op);
 }

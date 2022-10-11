@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 13:15:41 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/05 16:34:16 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/11 14:45:15 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ft_free(t_list *stack)
 {
 	t_element	*temp;
 	t_element	*index;
-	
-	while(stack->first->next->next)
+
+	while (stack->first->next->next)
 	{
 		index = stack->first->next;
 		temp = index->next->next;

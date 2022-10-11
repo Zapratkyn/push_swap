@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:18:46 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/05 16:46:20 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/11 14:14:56 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ void	ft_target_pos(t_list *a, t_list *b)
 	t_element	*indexx;
 	t_element	*temp;
 
-	
-	ft_reset_target(b);
 	temp = b->first;
 	while (temp)
 	{
@@ -79,7 +77,7 @@ void	ft_target_pos(t_list *a, t_list *b)
 
 int	ft_pos(t_list *a, t_list *b)
 {
-	int 		i;
+	int			i;
 	t_element	*temp;
 
 	i = 0;

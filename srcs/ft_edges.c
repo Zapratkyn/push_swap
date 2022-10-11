@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:09:50 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/11 12:10:38 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/11 14:10:17 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,30 @@ int	ft_initial_push(t_list *a, t_list *b, int k)
 	{
 		temp = a->first;
 		if (temp->index <= (k / 2))
-			op += push_b(a, b);
+			op += pb(a, b);
 		else if (temp->index > (k / 2))
-			op += rotate(a, 1);
+			op += ra(a);
 		i++;
 	}
 	while (a->first->next->next->next)
-		op += push_b(a, b);
+		op += pb(a, b);
 	return (op);
 }
 
-int    ft_finalisation(t_list *a, int k)
+int	ft_finalisation(t_list *a, int k)
 {
-    int op;
-    
-    op = 0;
-    if (a->first->index <= (k / 2))
-    {
-        while (!a_is_sorted(a))
-            op += reverse_rotate(a, 1);
-    }
-    else if (a->first->index > (k / 2))
-    {
-        while (!a_is_sorted(a))
-            op += rotate(a, 1);
-    }
-    return (op);
+	int	op;
+
+	op = 0;
+	if (a->first->index <= (k / 2))
+	{
+		while (!a_is_sorted(a))
+			op += rra(a);
+	}
+	else if (a->first->index > (k / 2))
+	{
+		while (!a_is_sorted(a))
+			op += ra(a);
+	}
+	return (op);
 }
