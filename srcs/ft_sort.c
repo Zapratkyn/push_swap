@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/04 11:50:15 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/11 12:12:49 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/11 12:15:11 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ t_element	*ft_pick(t_list *a, t_list *b)
 		}
 		temp = temp->next;
 	}
-	ft_printf("\nNombre choisi : %d\n\n", result->number);
 	return (result);
 }
 
