@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 13:35:38 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/11 14:39:41 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/12 12:40:52 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,22 @@ int	ft_end_of_number(char *str, int i)
 	return (1);
 }
 
+int	ft_limit(int k)
+{
+	if (k > 2147483647 || k < -2147483648)
+		return (0);
+	return (1);
+}
+
 int	ft_atoi(char *str)
 {
-	static long long	result = 0;
+	long long			result;
 	int					i;
 	int					sign;
 
 	sign = 1;
 	i = 0;
+	result = 0;
 	while (ft_is_space(str[i]))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
@@ -68,8 +76,7 @@ int	ft_atoi(char *str)
 	while (str[i] >= '0' && str[i] <= '9')
 		result = result * 10 + str[i++] - '0';
 	result = result * sign;
-	if (!ft_end_of_number(str, i) || result > 2147483647
-		|| result < -2147483648)
+	if (!ft_end_of_number(str, i) || !ft_limit(result))
 		return (0);
 	return ((int)result);
 }
