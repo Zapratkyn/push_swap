@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 17:00:00 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/11 12:39:28 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/18 15:40:03 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # include	<unistd.h>
 # include	<string.h>
 # include	<limits.h>
+# include	<fcntl.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 50
+# endif
 
 typedef struct s_element	t_element;
 typedef struct s_list		t_list;
@@ -52,18 +57,18 @@ size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 int				ft_toupper(int c);
 int				ft_tolower(int c);
-char			*ft_strchr(const char *s, int c);
+char			*ft_strchr(char *s, int c);
 char			*ft_strrchr(const char *s, int c);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 void			*ft_memchr(const void *s, int c, size_t n);
 int				ft_memcmp(const void *s1, const void *s2, size_t n);
-char			*ft_strnstr(const char *haystack,
+int				ft_strnstr(const char *haystack,
 					const char *needle, size_t len);
 int				ft_atoi(char *str);
 void			*ft_calloc(size_t count, size_t size);
 char			*ft_strdup(const char *s1);
 char			*ft_substr(char const *s, unsigned int start, size_t len);
-char			*ft_strjoin(char const *s1, char const *s2);
+char			*ft_strjoin(char *s1, char *s2);
 char			*ft_strtrim(char const *s1, char const *set);
 char			**ft_split(char const *s, char c);
 char			*ft_itoa(int n);
@@ -103,10 +108,19 @@ char			*ft_get_hex(unsigned int num, const char format,
 char			*ft_get_ptr(unsigned long num, unsigned int len);
 void			error(char *msg);
 void			error2(char *msg, t_list *a, t_list *b);
+void			error4(void);
 void			success(char *msg, t_list *a, t_list *b);
 void			success2(char *msg, t_list *a, t_list *b);
 void			success3(t_list *a, t_list *b, int op);
+void			success4(t_list *a, t_list *b, int op);
 void			ft_free(t_list *stack);
 int				ft_iszero(char *str);
+// get_next_line.c
+char			*get_next_line(int fd);
+char			*read_and_stash(int fd, char *str);
+char			*make_new_line(char *str);
+char			*ft_clean(char *str);
+// get_next_line_utils.c
+char			*empty_string(void);
 
 #endif

@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_errors.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/03 17:04:09 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/18 13:59:50 by gponcele         ###   ########.fr       */
+/*   Created: 2022/10/17 16:51:47 by gponcele          #+#    #+#             */
+/*   Updated: 2022/10/18 14:14:32 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	error(char *msg)
+int	ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	ft_putendl_fd(msg, 2);
-	exit(EXIT_FAILURE);
-}
+	size_t	i;
+	size_t	k;
+	char	*hs;
+	char	*nd;
 
-void	error2(char *msg, t_list *a, t_list *b)
-{
-	ft_putendl_fd(msg, 2);
-	if (a)
+	i = 0;
+	hs = (char *)haystack;
+	nd = (char *)needle;
+	if (nd[i] == '\0')
+		return (0);
+	while (hs[i])
 	{
-		if (a->first)
+		k = 0;
+		while ((hs[i + k] == nd[k]) && (k < len))
 		{
-			if (a->first->next)
-				ft_free(a);
-			free(a->first);
+			if (nd[k + 1] == '\0')
+				return (1);
+			k++;
 		}
-		free(a);
+		i++;
 	}
-	if (b)
-		free(b);
-	exit (EXIT_FAILURE);
-}
-
-void	error4(void)
-{
-	write (1, "\n", 1);
-	exit(EXIT_FAILURE);
+	return (0);
 }

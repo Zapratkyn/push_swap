@@ -6,13 +6,13 @@
 #    By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 16:52:45 by gponcele          #+#    #+#              #
-#    Updated: 2022/10/11 14:34:12 by gponcele         ###   ########.fr        #
+#    Updated: 2022/10/18 15:03:27 by gponcele         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS					=	ft_errors.c ft_success.c ft_putendl_fd.c ft_atoi.c ft_strlen.c ft_free.c \
 								ft_printf.c ft_print_chars.c ft_print_nbr.c ft_print_others.c ft_errors.c \
-								ft_success.c ft_free.c
+								ft_success.c ft_free.c get_next_line.c get_next_line_utils.c ft_strnstr.c 
 OBJS					= 	$(SRCS:.c=.o)
 BONUS_OBJS				= 	$(BONUS_SRCS:.c=.o)
 CC						= 	gcc

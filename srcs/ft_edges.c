@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 12:09:50 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/11 14:10:17 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/25 13:18:32 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_initial_push(t_list *a, t_list *b, int k)
 	(void)k;
 	i = 1;
 	op = 0;
-	while (i <= k)
+	while (i <= k && a->first->next->next->next)
 	{
 		temp = a->first;
 		if (temp->index <= (k / 2))

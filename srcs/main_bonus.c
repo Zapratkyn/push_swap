@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:18:46 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/18 14:54:31 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/18 15:01:02 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	fill_a(t_list *a, t_list *b, int nb)
 	temp->number = nb;
 	temp->index = -1;
 	temp->target_pos = INT_MAX;
+	temp->next = NULL;
 	if (i == 1)
 		a->first = temp;
 	else if (i > 1)
@@ -92,22 +93,23 @@ int	main(int argc, char **argv)
 	t_list		*a;
 	t_list		*b;
 
+	check_ft();
 	if (argc == 1)
-		error("Error");
+		error4();
 	a = initialisation('a');
 	b = initialisation('b');
 	if (!a || !b)
 		error2("Error", a, b);
 	check_args(a, b, argv);
 	if (!a->first->next)
-		success("Only one number. Nothing to sort.", a, b);
+		success("OK", a, b);
 	if (a_is_sorted(a))
-		success2("Numbers are already sorted.", a, b);
+		success2("OK", a, b);
 	if (argc > 4)
 		op += ft_sort(a, b, (argc - 1));
 	else if (argc <= 4)
 		op += sort_small_stack(a, (argc - 1));
 	if (!a_is_sorted(a) || op == 0)
-		error2("Error", a, b);
-	success3(a, b, op);
+		error2("KO", a, b);
+	success4(a, b, op);
 }

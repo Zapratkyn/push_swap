@@ -6,7 +6,7 @@
 /*   By: gponcele <gponcele@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 17:02:55 by gponcele          #+#    #+#             */
-/*   Updated: 2022/10/11 14:25:49 by gponcele         ###   ########.fr       */
+/*   Updated: 2022/10/18 13:51:40 by gponcele         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,10 @@ int								ft_option_4(t_list *stack, t_element *element);
 // ft_edges.c
 int								ft_finalisation(t_list *a, int k);
 int								ft_initial_push(t_list *a, t_list *b, int k);
+// check_ft.c
+int								ft_strnstr_check(char *str);
+void							check_ft(void);
+int								ft_ft(char *str);
+int								check_print(void);
 
 #endif
